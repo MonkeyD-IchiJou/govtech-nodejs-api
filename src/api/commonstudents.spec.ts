@@ -235,7 +235,6 @@ describe('Get students that registered to ALL of the given teachers', () => {
     expect(ctx.body.students.sort()).toEqual(['s2cs@gmail.com', 's3cs@gmail.com'].sort())
   })
 
-
   it("clean up teachers and students", async () => {
     const ctx: any = {
       request: {
