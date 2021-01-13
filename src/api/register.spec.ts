@@ -1,4 +1,6 @@
+import RegisterAPI from './register'
 import CommonStudentAPI from './commonstudents'
+import DeleteAPI from './delete'
 
 describe('teacher registering students testing', () => {
   it("teacher 1 should be able to register a students", async () => {
@@ -8,14 +10,17 @@ describe('teacher registering students testing', () => {
           teacher: 't1register@gmail.com',
           students: ['s1register@gmail.com']
         }
-      },
-      status: 500
+      }
     }
 
     try {
-      await CommonStudentAPI(ctx)
+      await RegisterAPI(ctx)
     } catch (e) {
       console.log(e)
+    }
+
+    if (ctx.body?.message) {
+      console.log(ctx.body.message)
     }
 
     expect(ctx.status).toBe(204)
@@ -28,14 +33,17 @@ describe('teacher registering students testing', () => {
           teacher: 't1register@gmail.com',
           students: ['s1register@gmail.com']
         }
-      },
-      status: 500
+      }
     }
 
     try {
-      await CommonStudentAPI(ctx)
+      await RegisterAPI(ctx)
     } catch (e) {
       console.log(e)
+    }
+
+    if (ctx.body?.message) {
+      console.log(ctx.body.message)
     }
 
     expect(ctx.status).toBe(404)
@@ -48,14 +56,17 @@ describe('teacher registering students testing', () => {
           teacher: 't1register@gmail.com',
           students: ['s2register@gmail.com', 's3register@gmail.com']
         }
-      },
-      status: 500
+      }
     }
 
     try {
-      await CommonStudentAPI(ctx)
+      await RegisterAPI(ctx)
     } catch (e) {
       console.log(e)
+    }
+
+    if (ctx.body?.message) {
+      console.log(ctx.body.message)
     }
 
     expect(ctx.status).toBe(204)
@@ -68,9 +79,24 @@ describe('teacher registering students testing', () => {
           teacher: 't1register@gmail.com',
           students: ['s4register@gmail.com', 's5register@gmail.com', 's6register@gmail.com', 's7register@gmail.com']
         }
-      },
-      status: 500
+      }
     }
+
+    try {
+      await RegisterAPI(ctx)
+    } catch (e) {
+      console.log(e)
+    }
+
+    if (ctx.body?.message) {
+      console.log(ctx.body.message)
+    }
+
+    expect(ctx.status).toBe(204)
+  })
+
+  it("Able to get all students registered by this teacher 1", async () => {
+    const ctx: any = { query: { teacher: 't1register@gmail.com' } }
 
     try {
       await CommonStudentAPI(ctx)
@@ -78,11 +104,20 @@ describe('teacher registering students testing', () => {
       console.log(e)
     }
 
-    expect(ctx.status).toBe(204)
-  })
+    if (ctx.body?.message) {
+      console.log(ctx.body.message)
+    }
 
-  it("Able to get all students registered by this teacher 1", async () => {
-
+    expect(ctx.status).toBe(200)
+    expect(ctx.body.students.sort()).toEqual([
+      "s1register@gmail.com",
+      "s2register@gmail.com",
+      "s3register@gmail.com",
+      "s4register@gmail.com",
+      "s5register@gmail.com",
+      "s6register@gmail.com",
+      "s7register@gmail.com"
+    ].sort())
   })
 
   it("teacher 2 should be able to register multiple students", async () => {
@@ -92,9 +127,24 @@ describe('teacher registering students testing', () => {
           teacher: 't2register@gmail.com',
           students: ['s1register@gmail.com', 's2register@gmail.com', 's3register@gmail.com']
         }
-      },
-      status: 500
+      }
     }
+
+    try {
+      await RegisterAPI(ctx)
+    } catch (e) {
+      console.log(e)
+    }
+
+    if (ctx.body?.message) {
+      console.log(ctx.body.message)
+    }
+
+    expect(ctx.status).toBe(204)
+  })
+
+  it("Able to get all students registered by this teacher 2", async () => {
+    const ctx: any = { query: { teacher: 't2register@gmail.com' } }
 
     try {
       await CommonStudentAPI(ctx)
@@ -102,12 +152,42 @@ describe('teacher registering students testing', () => {
       console.log(e)
     }
 
-    expect(ctx.status).toBe(204)
+    if (ctx.body?.message) {
+      console.log(ctx.body.message)
+    }
+
+    expect(ctx.status).toBe(200)
+    expect(ctx.body.students.sort()).toEqual(['s1register@gmail.com', 's2register@gmail.com', 's3register@gmail.com'].sort())
   })
 
-  it("Able to get all students registered by this teacher 2", async () => { })
+  it("clean up teacher 1 & 2 and its students", async () => {
+    const ctx: any = {
+      request: {
+        body: {
+          teachers: ['t1register@gmail.com', 't2register@gmail.com'],
+          students: [
+            "s1register@gmail.com",
+            "s2register@gmail.com",
+            "s3register@gmail.com",
+            "s4register@gmail.com",
+            "s5register@gmail.com",
+            "s6register@gmail.com",
+            "s7register@gmail.com"
+          ]
+        }
+      }
+    }
 
-  it("clean up teacher 1 and its students", async () => { })
+    try {
+      await DeleteAPI(ctx)
+    } catch (e) {
+      console.log(e)
+    }
 
-  it("clean up teacher 2 and its students", async () => { })
+    if (ctx.body?.message) {
+      console.log(ctx.body.message)
+    }
+
+    expect(ctx.status).toBe(204)
+  })
 })
