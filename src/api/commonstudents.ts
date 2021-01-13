@@ -55,7 +55,7 @@ export default async (ctx: ParameterizedContext<any, IRouterParamContext<any, {}
     ctx.status = 200
     ctx.body = { students: commonStudentsQuery[0].map((commonStudent: any) => commonStudent.email) }
   } catch (err) {
-    ctx.status = err.status || 500
+    ctx.status = err.status || 404
     ctx.body = { message: err.message }
   }
 
