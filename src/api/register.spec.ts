@@ -42,10 +42,6 @@ describe('teacher registering students testing', () => {
       console.log(e)
     }
 
-    if (ctx.body?.message) {
-      console.log(ctx.body.message)
-    }
-
     expect(ctx.status).toBe(404)
   })
 
