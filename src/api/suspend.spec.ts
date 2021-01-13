@@ -92,7 +92,7 @@ describe('Suspend student', () => {
     expect(ctx.status).toBe(204)
   })
 
-  it("clean up teacher 1 & 2 and its students", async () => {
+  it("clean up", async () => {
     const ctx: any = {
       request: {
         body: {
