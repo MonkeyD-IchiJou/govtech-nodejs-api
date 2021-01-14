@@ -8,7 +8,7 @@
     "start": "npm run build && node dist/index.js",
     "test": "jest --group=unit --verbose",
     "test:coverage": "jest --group=unit --coverage",
-    "test:integration": "jest --group=integration --verbose",
+    "test:integration": "rimraf ./coverage && jest --group=integration --verbose",
     "make-badges": "node_modules/.bin/istanbul-badges-readme"
   },
   "author": "",
