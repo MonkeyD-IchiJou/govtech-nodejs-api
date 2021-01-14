@@ -44,7 +44,7 @@ npm install
 
 Make sure you have Node.js version >= `14.13.1` and npm version >= `6.14.8`
 
-Please get the .env file from the main developer, copy and paste the .env file in the project top level directory (.e.g. ./govtech-nodejs-api/.env). This is an important step before running locally. The .env contains the credentials to connect to mysql database. 
+Please get the `.env` file from the main developer, copy and paste the `.env` file to the project top level directory (.e.g. ./govtech-nodejs-api/.env). This is a very important step before running locally. The `.env` contains the credentials to connect to mysql database. 
 
 After you have meet all the requirements in your local machine, you may run
 
