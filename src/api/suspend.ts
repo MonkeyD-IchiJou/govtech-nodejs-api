@@ -17,7 +17,7 @@ export default async (ctx: ParameterizedContext<any, IRouterParamContext<any, {}
       user: process.env.GT_DB_USR,
       database: process.env.GT_DB_NAME,
       password: process.env.GT_DB_PW
-    });
+    })
 
     const { student } = ctx.request.body
     await schema.validateAsync({ student })

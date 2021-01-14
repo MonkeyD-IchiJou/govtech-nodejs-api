@@ -7,6 +7,11 @@ const schema = Joi.object({
   teacher: [Joi.string().email({ minDomainSegments: 2 }).required(), Joi.array().items(Joi.string().email({ minDomainSegments: 2 })).required()]
 })
 
+/**
+ * Generate a query SQL string for getting a list of common students that registered by the teachers
+ * @param {number} numOfTeachers - total number of teachers in the query parameters
+ * @returns {string} - a SQL string
+ */
 function getCommonStudentsSqlString(numOfTeachers: number) {
   let sqlstring = 'SELECT email FROM students WHERE id IN ( SELECT t0.studentID FROM registrations t0 INNER JOIN registrations t1 ON t0.studentID = t1.studentID '
 

@@ -12,6 +12,11 @@ const schemaStudents = Joi.object({
   students: Joi.array().items(Joi.string().email({ minDomainSegments: 2 }))
 })
 
+/**
+ * 
+ * @param {number} i - the current index at first @ in the notification string
+ * @param {string} notification - notification text string
+ */
 function getStudentEmail(i: number, notification: string) {
   let studentEmail = ''
 
@@ -30,6 +35,11 @@ function getStudentEmail(i: number, notification: string) {
   return { j: notification.length - 1, studentEmail }
 }
 
+/**
+ * To get a list of email which get @ mentioning in the notification
+ * @param {string} notification - notification text string
+ * @returns {Array[string]}
+ */
 function getStudentEmails(notification: string) {
   const studentEmails = []
 
@@ -55,7 +65,7 @@ export default async (ctx: ParameterizedContext<any, IRouterParamContext<any, {}
       user: process.env.GT_DB_USR,
       database: process.env.GT_DB_NAME,
       password: process.env.GT_DB_PW
-    });
+    })
 
     const { teacher, notification } = ctx.request.body
     await schema.validateAsync({ teacher, notification })
