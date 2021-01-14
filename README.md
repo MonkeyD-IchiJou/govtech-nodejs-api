@@ -69,6 +69,6 @@ npm run test:integration
 All APIs descriptions and example is here https://documenter.getpostman.com/view/1166674/TVzUDFzY
 
 ### MySQL
-table diagram here
+![plot](./dataschema.png)
 
 
