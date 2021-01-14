@@ -8,7 +8,8 @@
     "start": "npm run build && node dist/index.js",
     "test": "jest --group=unit --verbose",
     "test:coverage": "jest --group=unit --coverage",
-    "test:integration": "jest --group=integration --verbose"
+    "test:integration": "jest --group=integration --verbose",
+    "make-badges": "node_modules/.bin/jest-badges-readme"
   },
   "author": "",
   "license": "ISC",
@@ -21,6 +22,7 @@
     "mysql2": "^2.2.5"
   },
   "devDependencies": {
+    "@olavoparno/jest-badges-readme": "^1.5.1",
     "@types/jest": "^26.0.20",
     "@types/koa": "^2.11.6",
     "@types/koa-bodyparser": "^4.3.0",

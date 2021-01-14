@@ -1,1 +1,1 @@
-the beginning
+https://img.shields.io/badge/Coverage-99.26%25-brightgreen.svg "Make me better!"https://img.shields.io/badge/Coverage-99.08%25-brightgreen.svg "Make me better!"https://img.shields.io/badge/Coverage-100%25-brightgreen.svg "Make me better!"https://img.shields.io/badge/Coverage-83.72%25-yellow.svg "Make me better!"the beginning

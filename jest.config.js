@@ -8,5 +8,9 @@ module.exports = {
   roots: [
     "<rootDir>/src"
   ],
-  runner: "groups"
+  runner: "groups",
+  coverageReporters: [
+    "json-summary",
+    "lcov"
+  ]
 };
