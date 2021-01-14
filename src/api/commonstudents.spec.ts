@@ -1,6 +1,9 @@
+import * as dotenv from "dotenv"
 import CommonStudentAPI from './commonstudents'
 import RegisterAPI from './register'
 import DeleteAPI from './delete'
+
+dotenv.config()
 
 describe('Get students that registered to ALL of the given teachers', () => {
   it("Will not success if pass in invalid email address", async () => {

@@ -1,6 +1,9 @@
+import * as dotenv from "dotenv"
 import RegisterAPI from './register'
 import SuspendAPI from './suspend'
 import DeleteAPI from './delete'
+
+dotenv.config()
 
 describe('Suspend student', () => {
   it("Will not success if pass in invalid email address", async () => {

@@ -1,6 +1,9 @@
+import * as dotenv from "dotenv"
 import RegisterAPI from './register'
 import CommonStudentAPI from './commonstudents'
 import DeleteAPI from './delete'
+
+dotenv.config()
 
 describe('teacher registering students testing', () => {
   it("teacher 1 should be able to register a students", async () => {

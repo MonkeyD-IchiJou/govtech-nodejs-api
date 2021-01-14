@@ -1,4 +1,7 @@
+import * as dotenv from "dotenv"
 import DeleteAPI from './delete'
+
+dotenv.config()
 
 describe('deletion', () => {
   it("cleaning up fail", async () => {

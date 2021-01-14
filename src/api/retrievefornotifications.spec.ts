@@ -1,7 +1,10 @@
+import * as dotenv from "dotenv"
 import RegisterAPI from './register'
 import RetrieveForNotificationsAPI from './retrievefornotifications'
 import SuspendAPI from './suspend'
 import DeleteAPI from './delete'
+
+dotenv.config()
 
 describe('teacher sending notifications to students', () => {
   it("Will not success if pass in invalid body obj", async () => {
