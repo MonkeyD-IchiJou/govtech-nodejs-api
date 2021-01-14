@@ -11,7 +11,7 @@ Develop a set of API endpoints for teachers to perform administrative functions 
 - [Getting Started](#getting-started)
   - [Running Locally](#running-locally)
   - [Testing Locally](#testing-locally)
-- [Extra Info](#extra info)
+- [Extra Info](#extra-info)
   - [API](#api)
   - [Project](#project)
   - [MySQL](#mysql)
