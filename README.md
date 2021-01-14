@@ -13,6 +13,7 @@ Develop a set of API endpoints for teachers to perform administrative functions 
   - [Testing Locally](#testing-locally)
 - [Documentation](#documentation)
   - [API](#api)
+  - [Project Structure](#project-structure)
   - [MySQL](#mysql)
 
 ## Introduction
@@ -67,6 +68,10 @@ npm run test:integration
 ### API
 
 All APIs descriptions and example is here https://documenter.getpostman.com/view/1166674/TVzUDFzY
+
+### Project Structure
+
+All the codes is in `src` folder. And the API implementation codes are in `src/api` folder.
 
 ### MySQL
 ![plot](./dataschema.png)
