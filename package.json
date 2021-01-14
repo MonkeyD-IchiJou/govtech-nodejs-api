@@ -1,6 +1,6 @@
 {
   "name": "govtech-nodejs-api",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "GovTech nodejs API asessment, A system where teacher can perform administrative functions for their students.",
   "main": "dist/index.js",
   "scripts": {
