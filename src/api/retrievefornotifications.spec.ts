@@ -1,3 +1,9 @@
+/**
+ * Tests /api/retrievefornotifications
+ *
+ * @group unit
+ */
+
 import * as dotenv from "dotenv"
 import RegisterAPI from './register'
 import RetrieveForNotificationsAPI from './retrievefornotifications'

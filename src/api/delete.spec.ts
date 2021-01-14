@@ -1,3 +1,9 @@
+/**
+ * Tests /api/delete
+ *
+ * @group unit
+ */
+
 import * as dotenv from "dotenv"
 import DeleteAPI from './delete'
 

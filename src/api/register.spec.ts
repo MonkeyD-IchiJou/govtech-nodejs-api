@@ -1,3 +1,9 @@
+/**
+ * Tests /api/register
+ *
+ * @group unit
+ */
+
 import * as dotenv from "dotenv"
 import RegisterAPI from './register'
 import CommonStudentAPI from './commonstudents'

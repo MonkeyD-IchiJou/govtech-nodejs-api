@@ -1,3 +1,9 @@
+/**
+ * Tests /api/suspend
+ *
+ * @group unit
+ */
+
 import * as dotenv from "dotenv"
 import RegisterAPI from './register'
 import SuspendAPI from './suspend'
