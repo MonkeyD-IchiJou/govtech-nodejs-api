@@ -24,7 +24,7 @@ router.post('/api/suspend', SuspendApi)
 router.post('/api/retrievefornotifications', RetrieveForNotificationsApi)
 
 // extra, for testing purpose
-router.post('/api/delete', DeleteApi)
+router.delete('/api/delete', DeleteApi)
 
 app.use(router.routes()).use(router.allowedMethods())
 
