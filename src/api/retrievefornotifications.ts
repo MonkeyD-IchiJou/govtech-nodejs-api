@@ -2,6 +2,7 @@ import { ParameterizedContext } from 'koa'
 import { IRouterParamContext } from 'koa-router'
 import Joi from 'joi'
 import mysql from 'mysql2/promise'
+import getEmailsFromNotification from '../helpers/getEmailsFromNotification'
 
 const schema = Joi.object({
   teacher: Joi.string().email({ minDomainSegments: 2 }).required(),
@@ -11,39 +12,6 @@ const schema = Joi.object({
 const schemaStudents = Joi.object({
   students: Joi.array().items(Joi.string().email({ minDomainSegments: 2 }))
 })
-
-function getStudentEmail(i: number, notification: string) {
-  let studentEmail = ''
-
-  for (let j = i + 1; j < notification.length; j++) {
-    if (notification.charAt(j) === '\n' || notification.charAt(j) === ' ') {
-      return { j, studentEmail }
-    }
-
-    studentEmail += notification.charAt(j)
-
-    if (j + 1 >= notification.length) {
-      return { j, studentEmail }
-    }
-  }
-
-  return { j: notification.length - 1, studentEmail }
-}
-
-function getStudentEmails(notification: string) {
-  const studentEmails = []
-
-  for (let i = 0; i < notification.length; i++) {
-    if (notification.charAt(i) === '@') {
-      const res = getStudentEmail(i, notification)
-
-      i = res?.j
-      studentEmails.push(res?.studentEmail)
-    }
-  }
-
-  return studentEmails
-}
 
 export default async (ctx: ParameterizedContext<any, IRouterParamContext<any, {}>>) => {
   let con: mysql.Connection | undefined
@@ -55,12 +23,12 @@ export default async (ctx: ParameterizedContext<any, IRouterParamContext<any, {}
       user: process.env.GT_DB_USR,
       database: process.env.GT_DB_NAME,
       password: process.env.GT_DB_PW
-    });
+    })
 
     const { teacher, notification } = ctx.request.body
     await schema.validateAsync({ teacher, notification })
 
-    const studentEmails = getStudentEmails(notification)
+    const studentEmails = getEmailsFromNotification(notification)
     await schemaStudents.validateAsync({ students: studentEmails })
 
     let notificationSqlString = ''

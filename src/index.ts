@@ -2,8 +2,8 @@ import * as dotenv from "dotenv";
 import Koa from 'koa'
 import Router from 'koa-router'
 import BodyParser from 'koa-bodyparser'
-import RegisterAPI from './api/register'
-import CommonStudentAPI from './api/commonstudents'
+import RegisterApi from './api/register'
+import CommonStudentApi from './api/commonstudents'
 import SuspendApi from './api/suspend'
 import RetrieveForNotificationsApi from './api/retrievefornotifications'
 import DeleteApi from './api/delete'
@@ -15,9 +15,9 @@ const router = new Router()
 
 app.use(BodyParser())
 
-router.post('/api/register', RegisterAPI)
+router.post('/api/register', RegisterApi)
 
-router.get('/api/commonstudents', CommonStudentAPI)
+router.get('/api/commonstudents', CommonStudentApi)
 
 router.post('/api/suspend', SuspendApi)
 

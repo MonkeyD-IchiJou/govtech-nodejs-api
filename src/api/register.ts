@@ -18,23 +18,26 @@ export default async (ctx: ParameterizedContext<any, IRouterParamContext<any, {}
       user: process.env.GT_DB_USR,
       database: process.env.GT_DB_NAME,
       password: process.env.GT_DB_PW
-    });
+    })
 
     const { teacher, students } = ctx.request.body
     await schema.validateAsync({ teacher, students })
 
     const NEW_UUID_IN_BIN = { toSqlString: () => 'UUID_TO_BIN(UUID())' }
 
+    // create a new entry for this teacher email, if not existed
     await con.query(
       'INSERT INTO teachers(id, email) VALUES ? ON DUPLICATE KEY UPDATE email=email',
       [[[NEW_UUID_IN_BIN, teacher]]]
     )
 
+    // create a new entry for these students, if not existed
     await con.query(
       'INSERT INTO students(id, email) VALUES ? ON DUPLICATE KEY UPDATE email=email',
       [students.map((student: string) => [NEW_UUID_IN_BIN, student])]
     )
 
+    // register all the students under this teacher
     await con.query(
       'INSERT INTO registrations(id, teacherID, studentID) VALUES ?',
       [
@@ -46,6 +49,7 @@ export default async (ctx: ParameterizedContext<any, IRouterParamContext<any, {}
       ]
     )
 
+    // done querying
     ctx.status = 204
   } catch (err) {
     ctx.status = err.status || 404
