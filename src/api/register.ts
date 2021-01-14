@@ -14,10 +14,10 @@ export default async (ctx: ParameterizedContext<any, IRouterParamContext<any, {}
   try {
     // create the connection to database
     con = await mysql.createConnection({
-      host: 'localhost',
-      user: 'root',
-      database: 'govtech_school',
-      password: '1234567'
+      host: process.env.GT_DB_HOST,
+      user: process.env.GT_DB_USR,
+      database: process.env.GT_DB_NAME,
+      password: process.env.GT_DB_PW
     });
 
     const { teacher, students } = ctx.request.body
