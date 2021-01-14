@@ -11,9 +11,9 @@ Develop a set of API endpoints for teachers to perform administrative functions 
 - [Getting Started](#getting-started)
   - [Running Locally](#running-locally)
   - [Testing Locally](#testing-locally)
-- [Documentation](#documentation)
+- [Extra Info](#extra info)
   - [API](#api)
-  - [Project Structure](#project-structure)
+  - [Project](#project)
   - [MySQL](#mysql)
 
 ## Introduction
@@ -63,17 +63,19 @@ npm run test
 npm run test:integration
 ```
 
-## Documentation
+## Extra Info
 
 ### API
 
 All APIs descriptions and example is here https://documenter.getpostman.com/view/1166674/TVzUDFzY
 
-### Project Structure
+### Project
 
-All the codes is in `src` folder. And the API implementation codes are in `src/api` folder.
+All the codes is in `src` folder. And the API implementation codes are in `src/api` folder. Typescript is the main programming language in this project.
 
 ### MySQL
 ![plot](./dataschema.png)
+
+Behind the scenes in mysql tables, I have 3 tables to store the necessary data about each student, teacher, and their registration relationship, instead of 1 giant table.
 
 
